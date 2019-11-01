@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{mnsymbol}
+\usepackage{graphicx}
+\usepackage{textgreek}
+\usepackage{float}
+\usepackage{caption}
+\author{Łukasz Jezapkowicz}
+\title{Wprowadzenie do programu Multisim}
+\date{12.04.2019}
+\begin{document}
+\newgeometry{tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\maketitle
+\tableofcontents \newpage
+\section{Sprawdzenie działania prawa Ohma i praw Kirchhoffa na przykładzie obwodu rezystancyjnego}
+\subsection{Cel ćwiczenia}
+Celem ćwiczenia było zapoznanie się z programem MultiSim, który jest wirtualnym laboratorium elektronicznym, na podstawie prostego obwodu rezystancyjnego. \newline \newline
+\subsection{Przebieg ćwiczenia}
+Na pulpicie symulacyjnym zbudowałem obwód rezystancyjny widoczny na \textbf{Rys. 1}.  Przedstawiony poniżej układ zawiera źródło napięcia stałego $V_1$, rezystor $R_1$ oraz potencjometr $R_2$. Na potencjometrze ustawiłem wartość rezystancji $600\Omega$.
+Korzystając z prawa Ohma i praw Kirchhoffa obliczę prąd płynący w obwodzie 1 oraz spadek napięcia na potencjonometrze $R_2$ czyli $U_{R_2}$. \newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]0
+\caption*{Rys. 1: Schemat obwodu rezystancyjnego}
+\end{figure}
+\noindent Oporniki $R_1$ i $R_2$ są połączone szeregowo więc ich opór zastępczy $R_Z = R_1 + R_2 = 1000\Omega + 600\Omega = 1600\Omega. $ \newline
+Z prawa Ohma wiemy, że natęzenie prądu w obwodzie równe jest: $I = \frac{U}{R_Z} = \frac{12V}{1600\Omega} = 0,0075A = 7,5 mA. $ \newline
+Dzięki temu możemy obliczyć spadek napięcia na potencjonometrze $R_2: U_{R_2} = R_2 * I = 600\Omega*7,5mA = 4,5 V. $\newline \newline
+Następnie dołączyłem do obwodu multimetry (rys. 2) i przy ich pomocy zmierzyłem prąd I oraz napięcie $U_{R_2}$. \newline
+Moim celem było porównanie wyników obliczeń z wskazaniami multimetrów XMM1 oraz XMM2. \newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]1
+\caption*{Rys. 2: Schemat obwodu rezystancyjnego z dołączonymi multimetrami XMM1 oraz XMM2}
+\end{figure}
+\noindent Następnie wykonałem analizę stałoprądową DC Operating Point by znów obliczyć te same wartości co wcześniej. Wyniki analizy DC widoczne są na rys. 3 . \newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]2
+\caption*{Rys. 3: Wyniki analizy stałoprądowej DC na wyżej zamieszczonym obwodzie. }
+\end{figure}
+\noindent Wyniki moich działań można podsumować tabelką (\textbf{rys. 4}). \newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]7
+\caption*{Rys. 4: Tabela zawierajacą wyniki ćwiczenia. }
+\end{figure}
+\subsection{Wnioski}
+Na podstawie porównania otrzymanych wyników w tabelce można stwierdzić, że MultiSim prawidłowo dokonuje symulacji prostego obwodu rezystancyjnego, korzysta z prawa Ohma i praw Kirchhoffa oraz podaje wyniki mocno zbliżone do rzeczywistych.
+\section{Analiza obwodów RC w dziedzinie czasu}
+\subsection{Cel ćwiczenia}
+Celem ćwiczenia było zapoznanie się z analizą obwodów w dziedzinie czasu. Ćwiczenie miało na celu wyznaczenie stałych czasowych ładowania i rozładowywania kondensatora w obwodzie RC. \newline \newline
+\subsection{Przebieg ćwiczenia}
+Na pulpicie symulacyjnym zbudowałem obwód RC widoczny na \textbf{Rys. 5}. Układ ten zawiera generator sygnału prostokątnego $V_1$ o amplitudzie $5V$ i częstotliwości $200Hz$, rezystor $R_1$ o rezystancji $1000\Omega$,
+potencjonometr $R_2$, na którym ustawiłem wartość rezystancji $600\Omega$ oraz kondensator $C_1$ o pojemności $1\mu$. Do układu dołączyłem również oscyloskop $XSC1$ umożliwiający obserwację przebiegów czasowych.
+W celu łatwiejszego rozróżnienia przebiegów zmieniłem kolor jednego z przewodów by na ekranie oscyloskopu były one lepiej rozróżnialne. Na \textbf{Rys. 5} widać ekran oscyloskopu. \newline
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]3
+\caption*{Rys. 5: Schemat obwodu RC z generatorem $V_1$ oraz oscyloskopem $XSC1$. }
+\end{figure}
+\newpage
+\noindent W celu uzyskania na ekranie czytelnych wyników, należało dobrać odpowiednie wartości podstawy czasu i wzmocnienia dla obu kanałów. Niestety oscyloskop pozwala jedynie na poglądową obserwację przebiegów czasowych.
+W dokładniejszej analizie posłużyła mi analiza Transient \newline \newline
+Teraz przeprowadziłem analizę Transient przebiegów czasowych by uzyskać obraz przebiegów napięcia wejściowego (z generatora) i wyjściowego (na kondensatorze $C_1$). W opcjach analizy Transient ustawiłem zakres czasu obserwacji
+od $0s$ do $0,005s$. Należało również wybrać węzły, w których dokonuje się obserwacji, w tym wypadku przebieg napięcia
+generowanego przez źródło sygnału $V_1$ oraz przebieg napięcia na kondensatorze $C_1$. Po uruchomieniu symulacji dostałem obraz przebiegów widoczny na \textbf{Rys. 6}. W celu zwiększenia czytelności włączyłem siatkę,
+kursory i białe tło przebiegów. Na rysunku zamieściłem również tabele ze współrzędnymi kursorów.
+\begin{figure}[H]
+\centering
+\includegraphics[width=17cm]4
+\caption*{Rys. 6: Wyniki analizy Transient. }
+\end{figure}
+\noindent Drugi wskaźnik ustawiłem na największej wartości napięcia na kondensatorze $U_0 = 1,8727V$. Czas potrzebny by osiągnać to napięcie to $t_0 = 2,4987s$. W celu policzenia stałej ładowania ustawiłem pierwszy wskaźnik na wartości napięcia 
+równej $0,63U_0 = 1,1798V$. Czas potrzebny do osiągnięcia takiego napięcia to $t = 0,372s$. Wynika stąd, że stała ładowania $\tau = 0,372s$. By obliczyć stałą rozładowania musiałem znaleźć czas, po którym wartość napięcia na kondensatorze
+spadła do $0,37U_0 = 0,6929V$. Czas potrzebny do osiągnięcia tego napięcia licząc od momentu $t_0$ wynosi $t = 0,373s$. Wynika stąd, że stała rozładowywania równa jest $\tau = 0,373s$. Wyniki podsumowuje tabelka (\textbf{rys. 7}).
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]8
+\caption*{Rys. 7: Tabela zawierająca obliczone stałe. }
+\end{figure}
+\subsection{Wnioski}
+Analiza Transient pozwala osiągnać dokładniejsze wyniki niż oscyloskop. Stałe ładowania i rozładowywania kondensatora mają zbliżone wartości, a różnica wynika z niedokładnego przybliżenia $e^-1$ i niedokładności odczytu wartości.
+\section{Analiza dzielnika napięciowego}
+\subsection{Cel ćwiczenia}
+Celem ćwiczenia było zapoznanie się z przykładowym dzielnikiem napięciowym i obliczenie napięcia $U_{R_2}$ na wyjściu. \newline \newline
+\subsection{Przebieg ćwiczenia}
+Na pulpicie symulacyjnym zbudowałem dzielnik napięciowy widoczny na \textbf{Rys. 8}. Zawiera on źródło napięcia $V_1$ o wartości $30V$, rezystor $R_1$ o wartości $56k\Omega$ oraz rezystor $R_2$ o wartości $100k\Omega$.
+W celu policzenia napięcia między rezystorami potrzebuje policzyć opór zastępczy układu. Oporniki połączone są szeregowo a więc $R_Z = R_1 + R_2 = 56k\Omega + 100k\Omega = 156k\Omega $. Z prawa Ohma mamy:
+$U_{R_2} = I * R_Z = \frac{V_1}{R_Z}*R_2 = \frac{12V}{156k\Omega}*100k\Omega = 19,23V $. Dołączyłem multimetr $XMM1$ w celu porównania wyników. Jak widać są one zgodne.
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]5
+\caption*{Rys. 8: Dzielnik napięciowy bez obciążenia. }
+\end{figure}
+\noindent Następnie dołączyłem równoległe do rezystora $R_2$ rezystor obciążenia $R_L = 10k\Omega$ (\textbf{rys. 9}). W celu policzenia napięcia między rezystorami znowu potrzebuje policzyć opór zastępczy układu. Oporniki $R_L$ oraz $R_2$ są 
+połączone równoległe więc ich opór zastępczy $\frac{1}{R_X} = \frac{1}{R_L}+\frac{1}{R_2}$. Po przekształceniach $R_X = \frac{R_2*R_L}{R_2+R_L} = \frac{100k\Omega*10k\Omega}{100k\Omega+10k\Omega} = 9,09k\Omega$. Oporniki $R_X$ oraz $R_1$ są połączone szeregowo a więc ich opór zastępczy $R_Z = R_X + R_1 = 9,09k\Omega + 56k\Omega = 65,09k\Omega$. Natężenie prądu w obwodzie to $I = \frac{V_1}{R_Z} = \frac{30V}{65,09k\Omega} = 0,46mA $. \newline A zatem napięcie $U_{R_2} = I*R_Z = 0,46mA*9,09k\Omega = 4,18V. $ Dołączyłem również multimetr $XMM1$ w celu porównania wyników. Jak widać są one niemal zgodne.
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]6
+\caption*{Rys. 9: Dzielnik napięciowy z obciążeniem $R_L = 10k\Omega$. }
+\end{figure}
+\noindent Całość podsumowuje tabelka na \textbf{Rys. 10}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]9
+\caption*{Rys. 10: Tabela zawierająca obliczone wielkości. }
+\end{figure}
+\subsection{Wnioski}
+Zbudowany dzielnik napięciowy pozwala skutecznie obliczać napięcie na wyjściu w danym miejscu układu. Różnice w obliczeniach są małe i wynikają z niedokładnego przybliżenia oporów zastępczych, natężenia prądu i niedokładności odczytu wartości.
+Po wykonaniu trzech ćwiczeń można stwierdzić, że MultiSim to skuteczny program do symulacji prostych obwodów.
+\end{document}
